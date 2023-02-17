@@ -1,22 +1,22 @@
-<script >
+<script setup>
+import Navbar from "./components/Navbar.vue";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
-import Navbar from "./components/Navbar.vue"
-export default{
-  components:{Navbar}
-}
+const store = useStore()
+
+onMounted(() => {
+  store.dispatch("fetchPlaylist");
+});
 </script>
 
-<template> 
+<template>
   <div>
     <header>
-      <Navbar/>
+      <Navbar />
     </header>
     <main>
-      <router-view/>
+      <router-view />
     </main>
   </div>
 </template>
-
-<style scoped>
-
-</style>

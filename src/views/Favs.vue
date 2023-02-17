@@ -1,21 +1,21 @@
 <script setup>
 import MusicCard from "../components/MusicCard.vue";
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 
-const playlist = computed(() => {
-	return store.getters.getPlaylist;
+const favs = computed(() => {
+	return store.getters.getFavs;
 });
 </script>
 
 <template>
 	<div class="cont">
-		<h1>Playlist</h1>
+		<h1>Favourites</h1>
 		<div class="cards">
 			<MusicCard
-				v-for="item in playlist"
+				v-for="item in favs"
 				:id="item.id"
 				:name="item.name"
 				:artist="item.artist"
@@ -23,7 +23,7 @@ const playlist = computed(() => {
 				:image="item.image"
 				:date="item.date_added.slice(0, 10)"
 				:time="item.date_added.slice(11, 16)"
-				:isFav="false"
+				:isFav="true"
 			/>
 		</div>
 	</div>
