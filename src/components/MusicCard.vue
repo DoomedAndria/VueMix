@@ -39,7 +39,13 @@ const dlt = (e) => {
 	aud.value.pause();
 
 	var id = e.currentTarget.getAttribute("item_id");
-	store.commit("removeItemFromPlaylist", id);
+	if (props.isFav) {
+		store.commit("removeItemFromFavs", id);
+	}
+	else{
+		store.commit("removeItemFromPlaylist", id);
+	}
+	
 };
 
 const add = (e) => {
