@@ -40,10 +40,10 @@ const dlt = (e) => {
 
 	var id = e.currentTarget.getAttribute("item_id");
 	if (props.isFav) {
-		store.commit("removeItemFromFavs", id);
+		store.commit("playlist/removeItemFromFavs", id);
 	}
 	else{
-		store.commit("removeItemFromPlaylist", id);
+		store.commit("playlist/removeItemFromPlaylist", id);
 	}
 	
 };
@@ -57,12 +57,12 @@ const add = (e) => {
 	if (props.isFav) {
 		item = store.getters.getItemByIdF(id);
 		console.log(item);
-		store.commit("addItemToPlaylist", item);
-		store.commit("removeItemFromFavs", id);
+		store.commit("playlist/addItemToPlaylist", item);
+		store.commit("playlist/removeItemFromFavs", id);
 	} else {
 		item = store.getters.getItemByIdP(id);
-		store.commit("addItemToFavs", item);
-		store.commit("removeItemFromPlaylist", id);
+		store.commit("playlist/addItemToFavs", item);
+		store.commit("playlist/removeItemFromPlaylist", id);
 	}
 };
 </script>

@@ -6,7 +6,7 @@ import { useStore } from "vuex";
 const store = useStore();
 
 const favs = computed(() => {
-	return store.getters.getFavs;
+	return store.getters["playlist/getPlaylist"]
 });
 </script>
 

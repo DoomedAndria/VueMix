@@ -1,5 +1,5 @@
-import currencies from "../modules/currencies"
+import currencies from "../modules/currencies";
 
-export default (store)=>{
-    store.registerModule("currencies",currencies)
-}
+export default (store) => {
+	store.registerModule("currencies", currencies);
+};

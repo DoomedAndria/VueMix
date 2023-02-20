@@ -22,7 +22,8 @@ const items = [
 	},
 ];
 const cartItemNum = computed(() => {
-	return store.getters.getFavs.length;
+	console.log(store.getters)
+	return 0;
 });
 </script>
 

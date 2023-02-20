@@ -1,12 +1,12 @@
 <script setup>
 import MusicCard from "../components/MusicCard.vue";
-import { onMounted, computed } from "vue";
+import { computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
 
 const playlist = computed(() => {
-	return store.getters.getPlaylist;
+	return store.getters["playlist/getPlaylist"];
 });
 </script>
 
