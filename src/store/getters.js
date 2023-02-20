@@ -11,4 +11,10 @@ export default {
 	getItemByIdF: (state) => (id) => {
 		return state.favs.find((e) => e.id == id);
 	},
+
+	
+	getCurrencies({currencies}) {
+		return currencies;
+	},
+	
 };

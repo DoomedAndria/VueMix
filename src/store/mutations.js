@@ -18,4 +18,8 @@ export default {
 	addItemToPlaylist(state, obj) {
 		state.playlist.push(obj);
 	},
+
+	updateCurrencies(state, currencies) {
+		state.currencies = currencies;
+	},
 };
