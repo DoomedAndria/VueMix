@@ -1,5 +1,5 @@
 <script setup>
-import {computed } from "vue";
+import { computed } from "vue";
 const props = defineProps({
 	code: String,
 	name: String,
@@ -9,8 +9,8 @@ const props = defineProps({
 });
 
 const inc = computed(() => {
-	console.log(props)
-	return props.diff >= 0;
+	console.log(props);
+	return props.diff > 0;
 });
 </script>
 

@@ -12,9 +12,7 @@ export default {
 		return state.favs.find((e) => e.id == id);
 	},
 
-	
-	getCurrencies({currencies}) {
-		return currencies;
-	},
-	
+	getCurrencies(state){
+		return state.currencies
+	}
 };

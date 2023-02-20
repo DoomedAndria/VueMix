@@ -12,8 +12,8 @@ export default {
 		axios
 			.get(import.meta.env.VITE_CURRENCIES_API_URL)
 			.then((result) => {
-				console.log(result.data[0].currencies)
 				commit("updateCurrencies", result.data[0].currencies);
+				console.log("response data ", result.data[0].currencies);
 			})
 			.catch(console.error);
 	},

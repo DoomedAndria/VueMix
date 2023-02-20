@@ -1,13 +1,23 @@
 <script setup>
-import MainLayout from './layouts/MainLayout.vue'
-import CartComponent from './components/CartComponent.vue'
-import ProductsListComponent from './components/ProductsListComponent.vue'
+import Navbar from "./components/Navbar.vue";
+import { useStore } from "vuex";
+import { onMounted } from "vue";
 
+const store = useStore()
+
+onMounted(() => {
+  store.dispatch("fetchPlaylist");
+  store.dispatch("fetchCurrencies");
+});
 </script>
 
 <template>
-  <MainLayout>
-    <ProductsListComponent class="w-full" />
-    <CartComponent class="w-full" />
-  </MainLayout>
+  <div>
+    <header>
+      <Navbar />
+    </header>
+    <main>
+      <router-view />
+    </main>
+  </div>
 </template>

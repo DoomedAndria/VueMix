@@ -1,6 +1,6 @@
 <script setup>
 import MusicCard from "../components/MusicCard.vue";
-import { computed } from "vue";
+import { onMounted, computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();

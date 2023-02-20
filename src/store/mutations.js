@@ -19,7 +19,7 @@ export default {
 		state.playlist.push(obj);
 	},
 
-	updateCurrencies(state, currencies) {
-		state.currencies = currencies;
-	},
+	updateCurrencies(state,currencies){
+		state.currencies = currencies
+	}
 };

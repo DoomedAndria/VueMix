@@ -1,5 +1,5 @@
 <script setup>
-import { computed, defineProps, ref } from "vue";
+import { computed, defineProps, watch, ref } from "vue";
 import { useStore } from "vuex";
 const props = defineProps({
 	id: Number,
@@ -41,9 +41,11 @@ const dlt = (e) => {
 	var id = e.currentTarget.getAttribute("item_id");
 	if (props.isFav) {
 		store.commit("removeItemFromFavs", id);
-	} else {
+	}
+	else{
 		store.commit("removeItemFromPlaylist", id);
 	}
+	
 };
 
 const add = (e) => {
