@@ -6,7 +6,7 @@ import CurrencyCard from "../components/CurrencyCard.vue";
 const store = useStore();
 
 const currencies = computed(() => {
-	return store.getters.getCurrencies;
+	return store.getters["currencies/getCurrencies"];
 });
 </script>
 
