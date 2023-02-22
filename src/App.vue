@@ -1,19 +1,21 @@
 <script setup>
 import Navbar from "./components/Navbar.vue";
 import { useStore } from "vuex";
-import { onMounted } from "vue";
+import { onMounted,computed } from "vue";
 
 const store = useStore();
 
+
 onMounted(() => {
-	store.dispatch("fetchPlaylist");
+	store.dispatch("playlist/fetchPlaylist");
 	store.dispatch("currencies/fetchCurrencies");
+	console.log(store)
 });
 </script>
 
 <template>
 	<div>
-		<header>
+		<header v-if="!$route.meta.hideNavbar" >
 			<Navbar />
 		</header>
 		<main>

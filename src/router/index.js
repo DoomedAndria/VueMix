@@ -6,22 +6,28 @@ export default createRouter({
 		{
 			path: "/",
 			name: "Home",
-			component: import("../views/Home.vue"),
+			component: () => import("../views/Home.vue"),
 		},
 		{
 			path: "/playlist",
 			name: "Playlist",
-			component: import("../views/Playlist.vue"),
+			component: () => import("../views/Playlist.vue"),
 		},
 		{
 			path: "/currencies",
 			name: "Currencies",
-			component: import("../views/Currencies.vue"),
+			component: () => import("../views/Currencies.vue"),
 		},
 		{
 			path: "/favs",
 			name: "Favs",
-			component: import("../views/Favs.vue"),
+			component: () => import("../views/Favs.vue"),
+		},
+		{
+			path: "/youtube",
+			name: "Youtube",
+			component: () => import("../views/YouTube.vue"),
+			meta: { hideNavbar: true }
 		},
 	],
 });

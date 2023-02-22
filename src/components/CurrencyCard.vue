@@ -9,7 +9,6 @@ const props = defineProps({
 });
 
 const inc = computed(() => {
-	console.log(props);
 	return props.diff > 0;
 });
 </script>

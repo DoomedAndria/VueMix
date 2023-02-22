@@ -55,12 +55,12 @@ const add = (e) => {
 	var id = e.currentTarget.getAttribute("item_id");
 	var item;
 	if (props.isFav) {
-		item = store.getters.getItemByIdF(id);
+		item = store.getters["playlist/getItemByIdF"](id);
 		console.log(item);
 		store.commit("playlist/addItemToPlaylist", item);
 		store.commit("playlist/removeItemFromFavs", id);
 	} else {
-		item = store.getters.getItemByIdP(id);
+		item = store.getters["playlist/getItemByIdP"](id);
 		store.commit("playlist/addItemToFavs", item);
 		store.commit("playlist/removeItemFromPlaylist", id);
 	}

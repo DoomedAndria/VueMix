@@ -21,8 +21,8 @@ const playlist = computed(() => {
 				:artist="item.artist"
 				:preview="item.preview"
 				:image="item.image"
-				:date="item.date_added.slice(0, 10)"
-				:time="item.date_added.slice(11, 16)"
+				:date="item['date_added'].slice(0, 10)"
+				:time="item['date_added'].slice(11, 16)"
 				:isFav="false"
 			/>
 		</div>

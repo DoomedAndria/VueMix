@@ -1,6 +1,6 @@
 import axios from "axios";
 export default {
-	nmaespaced: true,
+	namespaced: true,
 	state: {
 		playlist: null,
 		favs: [],
@@ -45,11 +45,11 @@ export default {
 		getFavs(state) {
 			return state.favs;
 		},
-		getItemByIdP(state, id) {
-			return state.playlist.find((e) => e.id == id);
+		getItemByIdP(state) {
+			return (id) => state.playlist.find((e) => e.id == id);
 		},
-		getItemByIdF(state, id) {
-			return state.favs.find((e) => e.id == id);
+		getItemByIdF(state) {
+			return (id) => state.favs.find((e) => e.id == id);
 		},
 	},
 };

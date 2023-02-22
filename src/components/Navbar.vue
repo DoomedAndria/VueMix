@@ -20,10 +20,14 @@ const items = [
 		name: "CURRENCIES",
 		url: "/currencies",
 	},
+	{
+		id: 4,
+		name: "YouTube",
+		url: "/youtube",
+	},
 ];
 const cartItemNum = computed(() => {
-	console.log(store.getters)
-	return 0;
+	return store.getters['playlist/getFavs'].length;
 });
 </script>
 
