@@ -28,6 +28,7 @@
 
 <style scoped>
 .side-cont {
+    position: fixed;
     display: flex;
     flex-direction: column;
 	width: 200px;
