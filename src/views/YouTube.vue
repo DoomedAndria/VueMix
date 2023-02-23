@@ -1,6 +1,10 @@
+<script setup>
+import YTheader from '../components/YTheader.vue';
+</script>
+
 <template>
     <div class="yt-cont">
-        
+        <YTheader/>
     </div>
 </template>
 
