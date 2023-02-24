@@ -1,4 +1,5 @@
 <script setup>
+import NavLayout from "../layouts/NavLayout.vue";
 import MusicCard from "../components/MusicCard.vue";
 import { computed } from "vue";
 import { useStore } from "vuex";
@@ -11,22 +12,24 @@ const playlist = computed(() => {
 </script>
 
 <template>
-	<div class="cont">
-		<h1>Playlist</h1>
-		<div class="cards">
-			<MusicCard
-				v-for="item in playlist"
-				:id="item.id"
-				:name="item.name"
-				:artist="item.artist"
-				:preview="item.preview"
-				:image="item.image"
-				:date="item['date_added'].slice(0, 10)"
-				:time="item['date_added'].slice(11, 16)"
-				:isFav="false"
-			/>
+	<NavLayout>
+		<div class="cont">
+			<h1>Playlist</h1>
+			<div class="cards">
+				<MusicCard
+					v-for="item in playlist"
+					:id="item.id"
+					:name="item.name"
+					:artist="item.artist"
+					:preview="item.preview"
+					:image="item.image"
+					:date="item['date_added'].slice(0, 10)"
+					:time="item['date_added'].slice(11, 16)"
+					:isFav="false"
+				/>
+			</div>
 		</div>
-	</div>
+	</NavLayout>
 </template>
 
 <style scoped>

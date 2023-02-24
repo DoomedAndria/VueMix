@@ -1,18 +1,27 @@
 <script setup>
-import ProfC from './ProfC.vue';
-import { ref } from 'vue';
+import ProfC from "./ProfC.vue";
+import { ref } from "vue";
+import { useStore } from "vuex";
 
-const ProfCopen = ref(false)
+const store = useStore();
+const ProfCopen = ref(false);
 
-function toggle(){
-	ProfCopen.value = !ProfCopen.value
+function toggle() {
+	ProfCopen.value = !ProfCopen.value;
 }
 </script>
 
 <template>
 	<div class="yt-header-cont">
 		<div>
-			<div class="but-cont">
+			<div
+				class="but-cont"
+				@click="
+					() => {
+						store.commit('youtube/toggleSidebarShrunk');
+					}
+				"
+			>
 				<img src="src\assets\icons\hamburger.png" alt="ham" />
 			</div>
 			<div class="yt-logo">
@@ -25,8 +34,8 @@ function toggle(){
 				<img src="src\assets\icons\search.png" alt="log" />
 			</button>
 		</div>
-		<div style="position: relative;">
-			<ProfC v-if="ProfCopen"/>
+		<div style="position: relative">
+			<ProfC v-if="ProfCopen" />
 
 			<div class="but-cont">
 				<img src="src\assets\icons\create.png" alt="log" />

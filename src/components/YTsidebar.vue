@@ -1,49 +1,58 @@
-<script setup></script>
+<script setup>
+import { useStore } from "vuex";
+import { computed } from "vue";
+import YTsideElement from "./YTsideElement.vue";
+
+const store = useStore();
+
+const isSrunk = computed(() => {
+	return store.getters["youtube/getSidebarShrunk"];
+});
+
+const sidebarItems = computed(() => {
+	return store.getters["youtube/getSidebarItems"];
+});
+</script>
 
 <template>
-	<div class="side-cont">
-		<div class="side-el">
-            <img src="src\assets\icons\home.png" alt="">
-            Home
-        </div>
-		<div class="side-el">
-            <img src="src\assets\icons\shorts.png" alt="">
-            Shorts
-        </div>
-		<div class="side-el">
-            <img src="src\assets\icons\subscriptions.png" alt="">
-            Subscriptions
-        </div>
-		<div class="side-el">
-            <img src="src\assets\icons\library.png" alt="">
-            Library
-        </div>
+	<div :class="['side-cont', isSrunk ? 'shrunk' : '']">
+		<YTsideElement
+			v-for="item in sidebarItems"
+			:name="item.name"
+			:icon="item.icon"
+		/>
 
-        <h2>subscriptions</h2>
-        <div>
-
-        </div>
+		<!-- <h2>subscriptions</h2> -->
 	</div>
 </template>
 
-<style scoped>
+<style>
+.side-cont.shrunk {
+	width: 64px;
+	margin: 5px;
+}
+
+.side-cont.shrunk .side-el {
+	height: 74px;
+	flex-direction: column;
+	font-size: 10px;
+	padding: 0;
+	justify-content: center;
+	align-items: center;
+}
+
+.side-cont.shrunk .side-el img {
+	margin: 0;
+}
+
 .side-cont {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
+	position: fixed;
+	display: flex;
+	flex-direction: column;
 	width: 200px;
-    height: 100%;
-    height: inherit;
-    background-color: white;
-    margin: 10px;
+	background-color: white;
+	margin: 10px;
 }
-
-
-.side-cont h2{
-    margin: 20px 0;
-    
-}
-
 .side-el {
 	height: 40px;
 	width: 100%;
@@ -52,16 +61,19 @@
 
 	display: flex;
 	align-items: center;
-    transition: all 0.08s;
-    cursor: pointer;
+	transition: all 0.08s;
+	cursor: pointer;
 }
 
-.side-el:hover{
-    background-color: #f5f3f3;
-}
-.side-el img{
-    width: 24px;
-    margin-right: 15px;
+.side-cont h2 {
+	margin: 20px 0;
 }
 
+.side-el:hover {
+	background-color: #f5f3f3;
+}
+.side-el img {
+	width: 24px;
+	margin-right: 15px;
+}
 </style>

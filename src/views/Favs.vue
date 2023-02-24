@@ -1,4 +1,5 @@
 <script setup>
+import NavLayout from "../layouts/NavLayout.vue";
 import MusicCard from "../components/MusicCard.vue";
 import { computed } from "vue";
 import { useStore } from "vuex";
@@ -6,27 +7,29 @@ import { useStore } from "vuex";
 const store = useStore();
 
 const favs = computed(() => {
-	return store.getters["playlist/getFavs"]
+	return store.getters["playlist/getFavs"];
 });
 </script>
 
 <template>
-	<div class="cont">
-		<h1>Favourites</h1>
-		<div class="cards">
-			<MusicCard
-				v-for="item in favs"
-				:id="item.id"
-				:name="item.name"
-				:artist="item.artist"
-				:preview="item.preview"
-				:image="item.image"
-				:date="item.date_added.slice(0, 10)"
-				:time="item.date_added.slice(11, 16)"
-				:isFav="true"
-			/>
+	<NavLayout>
+		<div class="cont">
+			<h1>Favourites</h1>
+			<div class="cards">
+				<MusicCard
+					v-for="item in favs"
+					:id="item.id"
+					:name="item.name"
+					:artist="item.artist"
+					:preview="item.preview"
+					:image="item.image"
+					:date="item.date_added.slice(0, 10)"
+					:time="item.date_added.slice(11, 16)"
+					:isFav="true"
+				/>
+			</div>
 		</div>
-	</div>
+	</NavLayout>
 </template>
 
 <style scoped>

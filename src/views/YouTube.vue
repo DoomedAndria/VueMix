@@ -1,4 +1,5 @@
 <script setup>
+import DefaultLayout from "../layouts/DefaultLayout.vue";
 import YTheader from "../components/YTheader.vue";
 import YTsidebar from "../components/YTsidebar.vue";
 import YTcard from "../components/YTcard.vue";
@@ -7,33 +8,40 @@ import { useStore } from "vuex";
 
 const store = useStore();
 
+const isShrunk = computed(() => {
+	return store.getters["youtube/getSidebarShrunk"];
+});
 const videos = computed(() => {
 	return store.getters["youtube/getVideos"];
 });
 </script>
 
 <template>
-	<div class="yt-cont">
-		<YTheader />
-		<div class="l1">
-			<div class="side">
+	<DefaultLayout>
+		<div class="yt-cont">
+			<YTheader />
+			<div class="l1">
 				<YTsidebar />
-			</div>
-			<div class="videos">
-				<YTcard
-					v-for="item in videos"
-					:id="item.id"
-					:url="item.url"
-					:name="item.name"
-					:channel="item.channel"
-					:thumbnail="item.thumbnail"
-					:date_uploaded="item.date_uploaded"
-					:views="item.views"
-					:channel_image="item.channel_image"
-				/>
+
+				<div
+					class="videos"
+					:style="{ marginLeft: isShrunk ? '64px' : '200px' }"
+				>
+					<YTcard
+						v-for="item in videos"
+						:id="item.id"
+						:url="item.url"
+						:name="item.name"
+						:channel="item.channel"
+						:thumbnail="item.thumbnail"
+						:date_uploaded="item.date_uploaded"
+						:views="item.views"
+						:channel_image="item.channel_image"
+					/>
+				</div>
 			</div>
 		</div>
-	</div>
+	</DefaultLayout>
 </template>
 
 <style scoped>
@@ -62,6 +70,7 @@ const videos = computed(() => {
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: center;
-	padding-top: 30px;
+	padding: 30px 10px 0 10px;
+	margin-left: 200px;
 }
 </style>
