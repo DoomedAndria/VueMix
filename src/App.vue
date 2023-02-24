@@ -9,7 +9,6 @@ onMounted(() => {
 	store.dispatch("playlist/fetchPlaylist");
 	store.dispatch("currencies/fetchCurrencies");
 	store.dispatch("youtube/fetchVideos");
-	console.log(store);
 });
 </script>
 

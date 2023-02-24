@@ -29,7 +29,6 @@ export default {
 			axios
 				.get(import.meta.env.VITE_YOUTUBE_API_URL)
 				.then((result) => {
-					console.log(result.data);
 					commit("updateVideos", result.data);
 				})
 				.catch(console.error);
