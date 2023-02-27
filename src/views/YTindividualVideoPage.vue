@@ -10,12 +10,12 @@ const store = useStore();
 onMounted(() => {
 	console.log(store.getters["youtube/getVideoById"](route.params.id));
 });
-const src = `https://www.youtube.com/embed/${route.params.id}`;
+const src = `https://www.youtube.com/embed/${route.params.id}?autoplay=1&mute=1&enablejsapi=1`;
 </script>
 
 <template>
 	<YTheaderLayout>
-		<iframe width="892" height="502" :src="src"> </iframe>
+		<iframe width="892" height="502" :src="src" frameborder="0" allowfullscreen> </iframe>
 		<span>{{ store.getters["youtube/getVideoById"](route.params.id) }}</span>
 	</YTheaderLayout>
 </template>

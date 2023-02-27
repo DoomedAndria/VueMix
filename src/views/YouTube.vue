@@ -12,6 +12,8 @@ const isShrunk = computed(() => {
 const videos = computed(() => {
 	return store.getters["youtube/getVideos"];
 });
+
+
 </script>
 
 <template>
@@ -46,7 +48,6 @@ const videos = computed(() => {
 	min-height: 100vh;
 }
 .l1 {
-	margin-top: 56px;
 	width: 100%;
 	height: 100%;
 	background: lig;

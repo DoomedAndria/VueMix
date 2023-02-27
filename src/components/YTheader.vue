@@ -9,6 +9,14 @@ const ProfCopen = ref(false);
 function toggle() {
 	ProfCopen.value = !ProfCopen.value;
 }
+const searchString = ref("");
+function change(e) {
+	searchString.value = e.target.value;
+	console.log(searchString.value);
+}
+function search() {
+	store.commit("youtube/updateSearch", searchString.value);
+}
 </script>
 
 <template>
@@ -29,8 +37,8 @@ function toggle() {
 			</div>
 		</div>
 		<div>
-			<input type="text" class="search" placeholder="Search" />
-			<button class="search-but">
+			<input @input="change" type="text" class="search" placeholder="Search" />
+			<button class="search-but" @click="search">
 				<img src="/src/assets/icons/search.png" alt="log" />
 			</button>
 		</div>

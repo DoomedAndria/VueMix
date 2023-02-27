@@ -5,6 +5,7 @@ export default {
 	state: {
 		videos: null,
 		api_videos: null,
+		search: "",
 		sidebarShrunk: false,
 		sidebarItems: [
 			{
@@ -55,10 +56,15 @@ export default {
 		updateApiVideos(state, api_videos) {
 			state.api_videos = api_videos;
 		},
+		updateSearch(state, search) {
+			state.search = search;
+		},
 	},
 	getters: {
 		getVideos(state) {
-			return state.videos;
+			return state.videos.filter((c) =>
+				c.name.toLowerCase().includes(state.search.toLowerCase())
+			);
 		},
 		getSidebarShrunk(state) {
 			return state.sidebarShrunk;
@@ -71,6 +77,9 @@ export default {
 		},
 		getVideoById(state) {
 			return (id) => state.videos.find((c) => c.video_id == id);
+		},
+		getSearch(state) {
+			return state.search;
 		},
 	},
 };
