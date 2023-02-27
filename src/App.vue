@@ -15,3 +15,4 @@ onMounted(() => {
 <template>
 	<router-view />
 </template>
+
