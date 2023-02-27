@@ -2,12 +2,8 @@
 import YTsidebar from "../components/YTsidebar.vue";
 import YTcard from "../components/YTcard.vue";
 import YTheaderLayout from "../layouts/YTheaderLayout.vue";
-import { computed ,onMounted} from "vue";
+import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
-
-onMounted(() => {
-	store.dispatch("youtube/fetchVideos");
-})
 
 const store = useStore();
 const isShrunk = computed(() => {
@@ -16,7 +12,6 @@ const isShrunk = computed(() => {
 const videos = computed(() => {
 	return store.getters["youtube/getVideos"];
 });
-
 </script>
 
 <template>

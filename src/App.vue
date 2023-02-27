@@ -7,7 +7,8 @@ const store = useStore();
 onMounted(() => {
 	store.dispatch("playlist/fetchPlaylist");
 	store.dispatch("currencies/fetchCurrencies");
-	store.dispatch("youtube/fetchApiVideos")
+	store.dispatch("youtube/fetchApiVideos");
+	store.dispatch("youtube/fetchVideos");
 });
 </script>
 

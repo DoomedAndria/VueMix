@@ -66,8 +66,11 @@ export default {
 		getSidebarItems(state) {
 			return state.sidebarItems;
 		},
-		getApiVideos(state){
-			return state.api_videos
-		}
+		getApiVideos(state) {
+			return state.api_videos;
+		},
+		getVideoById(state) {
+			return (id) => state.videos.find((c) => c.video_id == id);
+		},
 	},
 };
