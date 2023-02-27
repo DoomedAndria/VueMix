@@ -27,7 +27,13 @@ export default createRouter({
 			path: "/youtube",
 			name: "Youtube",
 			component: () => import("../views/YouTube.vue"),
-			meta: { hideNavbar: true }
 		},
+		{
+			path: "/youtube/:id",
+			name: "Ind",
+			component: () => import("../views/YTindividualVideoPage.vue"),
+		},
+		
+		
 	],
 });

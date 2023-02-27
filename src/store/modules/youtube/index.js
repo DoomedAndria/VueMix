@@ -4,6 +4,7 @@ export default {
 	namespaced: true,
 	state: {
 		videos: null,
+		api_videos: null,
 		sidebarShrunk: false,
 		sidebarItems: [
 			{
@@ -33,6 +34,16 @@ export default {
 				})
 				.catch(console.error);
 		},
+		fetchApiVideos({ commit }) {
+			axios
+				.get(
+					"https://youtube.googleapis.com/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&chart=mostPopular&maxResults=120&regionCode=US&key=AIzaSyCWjReqFeZbbopqMtApZuUzpnz0_D8F9AE"
+				)
+				.then((result) => {
+					commit("updateApiVideos", result.data.items);
+				})
+				.catch(console.error);
+		},
 	},
 	mutations: {
 		updateVideos(state, videos) {
@@ -40,6 +51,9 @@ export default {
 		},
 		toggleSidebarShrunk(state) {
 			state.sidebarShrunk = !state.sidebarShrunk;
+		},
+		updateApiVideos(state, api_videos) {
+			state.api_videos = api_videos;
 		},
 	},
 	getters: {
@@ -52,5 +66,8 @@ export default {
 		getSidebarItems(state) {
 			return state.sidebarItems;
 		},
+		getApiVideos(state){
+			return state.api_videos
+		}
 	},
 };

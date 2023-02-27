@@ -1,47 +1,45 @@
 <script setup>
-import DefaultLayout from "../layouts/DefaultLayout.vue";
-import YTheader from "../components/YTheader.vue";
 import YTsidebar from "../components/YTsidebar.vue";
 import YTcard from "../components/YTcard.vue";
-import { computed } from "vue";
+import YTheaderLayout from "../layouts/YTheaderLayout.vue";
+import { computed ,onMounted} from "vue";
 import { useStore } from "vuex";
 
-const store = useStore();
+onMounted(() => {
+	store.dispatch("youtube/fetchVideos");
+})
 
+const store = useStore();
 const isShrunk = computed(() => {
 	return store.getters["youtube/getSidebarShrunk"];
 });
 const videos = computed(() => {
 	return store.getters["youtube/getVideos"];
 });
+
 </script>
 
 <template>
-	<DefaultLayout>
-		<div class="yt-cont">
-			<YTheader />
-			<div class="l1">
-				<YTsidebar />
+	<YTheaderLayout>
+		<div class="l1">
+			<YTsidebar />
 
-				<div
-					class="videos"
-					:style="{ marginLeft: isShrunk ? '64px' : '200px' }"
-				>
-					<YTcard
-						v-for="item in videos"
-						:id="item.id"
-						:url="item.url"
-						:name="item.name"
-						:channel="item.channel"
-						:thumbnail="item.thumbnail"
-						:date_uploaded="item.date_uploaded"
-						:views="item.views"
-						:channel_image="item.channel_image"
-					/>
-				</div>
+			<div class="videos" :style="{ marginLeft: isShrunk ? '64px' : '200px' }">
+				<YTcard
+					v-for="item in videos"
+					:id="item.id"
+					:video_id="item.video_id"
+					:url="item.url"
+					:name="item.name"
+					:channel="item.channel"
+					:thumbnail="item.thumbnail"
+					:date_uploaded="item.date_uploaded"
+					:views="item.views"
+					:channel_image="item.channel_image"
+				/>
 			</div>
 		</div>
-	</DefaultLayout>
+	</YTheaderLayout>
 </template>
 
 <style scoped>

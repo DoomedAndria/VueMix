@@ -3,6 +3,7 @@ import { computed } from "vue";
 
 const props = defineProps({
 	id:Number,
+	video_id:String,
 	url:String,
 	name:String,
 	channel:String,
@@ -55,7 +56,7 @@ const gotoWeb = (url)=>{
 </script>
 
 <template>
-	<div class="yt-card-cont" @click="gotoWeb(url)">
+	<div class="yt-card-cont" @click="gotoWeb(`/youtube/${video_id}`)">
 		<div class="yt-image">
 			<img :src="thumbnail" alt="thumbnail" />
 		</div>

@@ -22,26 +22,26 @@ function toggle() {
 					}
 				"
 			>
-				<img src="src\assets\icons\hamburger.png" alt="ham" />
+				<img src="/src/assets/icons/hamburger.png" alt="ham" />
 			</div>
 			<div class="yt-logo">
-				<img src="src\assets\icons\youtube.png" alt="log" />
+				<img src="/src/assets/icons/youtube.png" alt="log" />
 			</div>
 		</div>
 		<div>
 			<input type="text" class="search" placeholder="Search" />
 			<button class="search-but">
-				<img src="src\assets\icons\search.png" alt="log" />
+				<img src="/src/assets/icons/search.png" alt="log" />
 			</button>
 		</div>
 		<div style="position: relative">
 			<ProfC v-if="ProfCopen" />
 
 			<div class="but-cont">
-				<img src="src\assets\icons\create.png" alt="log" />
+				<img src="/src/assets/icons/create.png" alt="log" />
 			</div>
 			<div class="but-cont">
-				<img src="src\assets\icons\bell.png" alt="log" />
+				<img src="/src/assets/icons/bell.png" alt="log" />
 			</div>
 			<div
 				@click="toggle"
