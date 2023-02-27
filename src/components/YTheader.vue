@@ -12,7 +12,6 @@ function toggle() {
 const searchString = ref("");
 function change(e) {
 	searchString.value = e.target.value;
-	console.log(searchString.value);
 }
 function search() {
 	store.commit("youtube/updateSearch", searchString.value);
