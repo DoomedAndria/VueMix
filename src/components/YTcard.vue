@@ -1,5 +1,6 @@
 <script setup>
 import { computed } from "vue";
+import { useRouter } from "vue-router";
 
 const props = defineProps({
 	id:Number,
@@ -12,6 +13,7 @@ const props = defineProps({
 	views:String,
 	channel_image:String
 })
+
 
 const formated_views = computed(() => (num) => {
 	if (num < 1000) {
@@ -50,13 +52,12 @@ const time = computed(()=>(dateString)=>{
 	return 'just now';
 })
 
-const gotoWeb = (url)=>{
-	window.location.href = url
-}
+const route = useRouter()
+
 </script>
 
 <template>
-	<div class="yt-card-cont" @click="gotoWeb(`/youtube/${video_id}`)">
+	<div class="yt-card-cont" @click="route.push(`/youtube/${video_id}`)">
 		<div class="yt-image">
 			<img :src="thumbnail" alt="thumbnail" />
 		</div>
