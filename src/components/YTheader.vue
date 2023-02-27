@@ -10,6 +10,7 @@ function toggle() {
 	ProfCopen.value = !ProfCopen.value;
 }
 const searchString = ref("");
+
 function change(e) {
 	searchString.value = e.target.value;
 }
