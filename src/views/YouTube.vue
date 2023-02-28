@@ -2,6 +2,7 @@
 import YTsidebar from "../components/YTsidebar.vue";
 import YTcard from "../components/YTcard.vue";
 import YTheaderLayout from "../layouts/YTheaderLayout.vue";
+import TabList from "../components/TabList.vue";
 import { computed, onMounted } from "vue";
 import { useStore } from "vuex";
 
@@ -20,7 +21,7 @@ const videos = computed(() => {
 	<YTheaderLayout>
 		<div class="l1">
 			<YTsidebar />
-
+      <TabList></TabList>
 			<div class="videos" :style="{ marginLeft: isShrunk ? '64px' : '200px' }">
 				<YTcard
 					v-for="item in videos"
@@ -64,7 +65,8 @@ const videos = computed(() => {
 	flex-wrap: wrap;
 	width: 100%;
 	justify-content: center;
-	padding: 30px 10px 0 10px;
+	padding: 30px 20px 0 10px;
 	margin-left: 200px;
+  margin-top: 5vh;
 }
 </style>

@@ -37,7 +37,7 @@ function search() {
 			</div>
 		</div>
 		<div>
-			<input @input="change" type="text" class="search" placeholder="Search" />
+			<input @input="change" type="text" class="search" placeholder="Search" @keypress.enter="search"/>
 			<button class="search-but" @click="search">
 				<img src="/src/assets/icons/search.png" alt="log" />
 			</button>
