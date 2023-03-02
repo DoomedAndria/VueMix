@@ -27,7 +27,7 @@ const items = [
 	},
 ];
 const cartItemNum = computed(() => {
-	return store.getters['playlist/getFavs'].length;
+	return store.getters["playlist/getFavs"].length;
 });
 </script>
 
@@ -52,7 +52,7 @@ const cartItemNum = computed(() => {
 </template>
 
 <style scoped>
-@import url("https://css.gg/heart.css");
+@import url('https://unpkg.com/css.gg@2.0.0/icons/css/heart.css');
 
 .nav {
 	background-color: #659dbd;

@@ -1,6 +1,6 @@
 <script setup>
 import ProfC from "./ProfC.vue";
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { useStore } from "vuex";
 
 const store = useStore();
@@ -17,6 +17,10 @@ function change(e) {
 function search() {
 	store.commit("youtube/updateSearch", searchString.value);
 }
+
+const profile = computed(() => {
+	return store.getters["youtube/getProfile"];
+});
 </script>
 
 <template>
@@ -37,7 +41,13 @@ function search() {
 			</div>
 		</div>
 		<div>
-			<input @input="change" type="text" class="search" placeholder="Search" @keypress.enter="search"/>
+			<input
+				@input="change"
+				type="text"
+				class="search"
+				placeholder="Search"
+				@keypress.enter="search"
+			/>
 			<button class="search-but" @click="search">
 				<img src="/src/assets/icons/search.png" alt="log" />
 			</button>
@@ -60,7 +70,18 @@ function search() {
 					border-radius: 40px;
 					cursor: pointer;
 				"
-			></div>
+			>
+				<img
+					:src="profile.image"
+					alt="s"
+					style="
+						width: 100%;
+						height: 100%;
+						object-fit: cover;
+						border-radius: inherit;
+					"
+				/>
+			</div>
 		</div>
 	</div>
 </template>

@@ -27,13 +27,24 @@ export default createRouter({
 			path: "/youtube",
 			name: "Youtube",
 			component: () => import("../views/YouTube.vue"),
+			children: [
+				
+			],
+		},
+		{
+			path: "/youtube/settings",
+			name: "Settings",
+			component: () => import("../views/YTsettings.vue"),
+		},
+		{
+			path: "/youtube/settings/editProfile",
+			name: "Edit",
+			component: () => import("../views/YTeditProfile.vue"),
 		},
 		{
 			path: "/youtube/:id",
 			name: "Ind",
 			component: () => import("../views/YTindividualVideoPage.vue"),
 		},
-		
-		
 	],
 });

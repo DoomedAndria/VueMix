@@ -3,6 +3,13 @@ import axios from "axios";
 export default {
     namespaced: true,
     state: {
+        profile: {
+            name: "Andro",
+            surname: "Bibiashvili",
+            email: "bibiashviliandria@gmail.com",
+            image:
+                "https://th.bing.com/th/id/OIP.erIu5ZBnnpwpJ0RkDTDVkAHaHj?pid=ImgDet&rs=1",
+        },
         videos: null,
         api_videos: null,
         search: "",
@@ -29,48 +36,48 @@ export default {
             {
                 id: 0,
                 category: "All",
-                name: "ყველა"
+                name: "All",
             },
             {
                 id: 1,
                 category: "Film and Animation",
-                name: "ფილმი და ანიმაცია",
+                name: "Film and Animation",
             },
             {
                 id: 2,
                 category: "Autos and Vehicles",
-                name: "მანქანები",
+                name: "Autos and Vehicles",
             },
             {
                 id: 3,
                 category: "Music",
-                name: "მუსიკა",
+                name: "Music",
             },
             {
                 id: 4,
                 category: "Pets & Animals",
-                name: "შინაური ცხოველები",
+                name: "Pets & Animals",
             },
             {
                 id: 5,
                 category: "Sports",
-                name: "სპორტი",
+                name: "Sports",
             },
             {
                 id: 6,
                 category: "Travel and Events",
-                name: "მოგზაურობა და წვეულებები",
+                name: "Travel and Events",
             },
             {
                 id: 7,
                 category: "Gaming",
-                name: "თამაშები",
+                name: "Gaming",
             },
             {
                 id: 8,
                 category: "People and Blogs",
-                name: "ხალხი და ბლოგები",
-            }
+                name: "People and Blogs",
+            },
         ],
         categoryId: 0,
     },
@@ -108,15 +115,22 @@ export default {
             state.search = search;
         },
         updateCategoryId(state, id) {
-            console.log(id)
             state.categoryId = id;
+        },
+        updateProfile(state, profile) {
+            state.profile = profile
         }
     },
     getters: {
         getVideos(state) {
             const cId = state.categoryId;
-            return (cId === 0 ? state.videos : state.videos.filter((c) => c.categoryId === cId)).filter((c) =>
-                c.name.toLowerCase().includes(state.search.toLowerCase()))
+            return (
+                cId === 0
+                    ? state.videos
+                    : state.videos.filter((c) => c.categoryId === cId)
+            ).filter((c) =>
+                c.name.toLowerCase().includes(state.search.toLowerCase())
+            );
         },
         getSidebarShrunk(state) {
             return state.sidebarShrunk;
@@ -135,6 +149,9 @@ export default {
         },
         getCategories(state) {
             return state.categories;
+        },
+        getProfile(state) {
+            return state.profile;
         },
     },
 };

@@ -8,7 +8,7 @@ const updateCategoryId = (id) => store.commit("youtube/updateCategoryId", id)
 </script>
 
 <template>
-  <div class="fixed flex items-center bg-[white] h-[7vh] w-full ml-[14vw] p-[15px]">
+  <div class="tab ">
     <button v-for="cat in tabList" class="m-[3px] p-[5px] hover:bg-neutral-200 hover:rounded-[10px]"
             @click="updateCategoryId(cat.id)">{{
         cat.name
@@ -18,5 +18,12 @@ const updateCategoryId = (id) => store.commit("youtube/updateCategoryId", id)
 </template>
 
 <style scoped>
-
+.tab{
+  display: flex;
+  align-items: center;
+  background: white;
+  height: 50px;
+  width: 100%;
+  justify-content: center;
+}
 </style>

@@ -1,6 +1,7 @@
 <script setup>
 import DefaultLayout from './DefaultLayout.vue';
 import YTheader from '../components/YTheader.vue';
+import TabList from '../components/TabList.vue';
 const props = defineProps({
 	video:Object
 })
@@ -21,7 +22,7 @@ const props = defineProps({
 	background-color: white;
 	display: flex;
 	flex-direction: column;
-	width: 100vw;
+	max-width: 100vw;
 	min-height: 100vh;
 }
 .yt-header-place{
