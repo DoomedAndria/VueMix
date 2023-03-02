@@ -7,6 +7,9 @@ export default createRouter({
 			path: "/",
 			name: "Home",
 			component: () => import("../views/Home.vue"),
+			children:[
+
+			]
 		},
 		{
 			path: "/playlist",
@@ -25,26 +28,39 @@ export default createRouter({
 		},
 		{
 			path: "/youtube",
-			name: "Youtube",
-			component: () => import("../views/YouTube.vue"),
+			component: () => import("../views/RouterView.vue"),
 			children: [
-				
+				{
+					path:"",
+					name:"youtube",
+					component: () => import("../views/YouTube.vue"),
+
+				},
+				{
+					path: ":id",
+					name: "Ind",
+					component: () => import("../views/YTindividualVideoPage.vue"),
+				},
+				{
+					path:"settings",
+					component: ()=> import('../views/RouterView.vue'),
+					children:[
+						{
+							path:"",
+							name:"Settings",
+							component: () => import("../views/YTsettings.vue"),
+						},
+						{
+							path: "editProfile",
+							name: "Edit",
+							component: () => import("../views/YTeditProfile.vue"),
+						},
+					]
+				}
 			],
 		},
-		{
-			path: "/youtube/settings",
-			name: "Settings",
-			component: () => import("../views/YTsettings.vue"),
-		},
-		{
-			path: "/youtube/settings/editProfile",
-			name: "Edit",
-			component: () => import("../views/YTeditProfile.vue"),
-		},
-		{
-			path: "/youtube/:id",
-			name: "Ind",
-			component: () => import("../views/YTindividualVideoPage.vue"),
-		},
+
+
+
 	],
 });
