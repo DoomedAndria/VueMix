@@ -7,6 +7,7 @@ onMounted(() => {
   store.dispatch("currencies/fetchCurrencies");
   store.dispatch("youtube/fetchApiVideos");
   store.dispatch("youtube/fetchVideos");
+  store.dispatch("users/fetchUsers");
 });
 </script>
 

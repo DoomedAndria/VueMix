@@ -1,20 +1,17 @@
+import axios from "axios";
 export default {
+    namespaced:true,
     state() {
         return {
-            users: [
-                {
-                    id: 0,
-                    firstName: "",
-                    lastName: "",
-                    email: "",
-                    password: ""
-                }
-            ],
+            users: [],
             user: null
 
         }
     },
     mutations: {
+        updateUsers(state,users){
+          state.users = users
+        },
         REGISTER(state, user) {
             state.user.push(user)
         },
@@ -34,8 +31,23 @@ export default {
         }
 
     },
-    getters: {},
+    getters: {
+        getUsers(state){
+            return state.users
+        },
+        getUserById(state){
+            return (id)=>{state.users.find(u=> u.id==id)}
+        }
+    },
     actions: {
+        fetchUsers({commit}){
+            axios
+                .get(import.meta.env.VITE_USERS_API)
+                .then((result) => {
+                    commit("updateUsers", result.data.data);
+                })
+                .catch(console.error);
+        },
         registerUser({commit},user){
             commit('REGISTER',user)
             commit('AUTHENTICATION',user)
