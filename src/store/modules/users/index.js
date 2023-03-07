@@ -1,6 +1,7 @@
 import axios from "axios";
+
 export default {
-    namespaced:true,
+    namespaced: true,
     state() {
         return {
             users: [],
@@ -9,8 +10,8 @@ export default {
         }
     },
     mutations: {
-        updateUsers(state,users){
-          state.users = users
+        updateUsers(state, users) {
+            state.users = users
         },
         REGISTER(state, user) {
             state.user.push(user)
@@ -21,8 +22,8 @@ export default {
                 state.user = user
             }
         },
-        UPDATE_USER_INFO(state, user){
-            const _user = state.users.find(u=> u.id === user.id)
+        UPDATE_USER_INFO(state, user) {
+            const _user = state.users.find(u => u.id === user.id)
             _user.id = user.id
             _user.firstName = user.firstName
             _user.lastName = user.lastName
@@ -32,15 +33,17 @@ export default {
 
     },
     getters: {
-        getUsers(state){
+        getUsers(state) {
             return state.users
         },
-        getUserById(state){
-            return (id)=>{state.users.find(u=> u.id==id)}
+        getUserById(state) {
+            return (id) => {
+                return state.users.find(u => u.id == id)
+            }
         }
     },
     actions: {
-        fetchUsers({commit}){
+        fetchUsers({commit}) {
             axios
                 .get(import.meta.env.VITE_USERS_API)
                 .then((result) => {
@@ -48,9 +51,9 @@ export default {
                 })
                 .catch(console.error);
         },
-        registerUser({commit},user){
-            commit('REGISTER',user)
-            commit('AUTHENTICATION',user)
+        registerUser({commit}, user) {
+            commit('REGISTER', user)
+            commit('AUTHENTICATION', user)
         },
 
     }
